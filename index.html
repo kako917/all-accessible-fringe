@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('image/search-home.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .search-container {
+            text-align: center;
+            position: relative;
+            width: 80%;
+        }
+
+        .search-bar {
+            width: 60%;
+            height: 33px;
+            padding: 10px;
+            font-size: 24px;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            margin: auto;
+            padding-right: 40px;
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 230px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .suggestions {
+            display: none;
+            width: 64%;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            z-index: 100;
+        }
+
+        .suggestions a {
+            width: 200px; /* 横幅を設定 */
+            height: auto; /* 自動調整。これでテキスト量に応じて縦幅は自然に決まる */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            color: black;
+            background-color: white;
+            display: inline-block; /* 横幅を設定可能にする */
+            cursor: pointer;
+            padding: 10px 0; /* 上下の余白は固定、左右の余白は省略 */
+            margin: 5px;
+            text-align: center; /* テキストを中央揃えにする */
+            box-sizing: border-box; /* ボーダーとパディングを幅に含める */
+        }
+
+
+
+        .suggestions a:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <input type="text" class="search-bar" id="searchInput" placeholder="Search...">
+        <img src="image/search.png" alt="Search Icon" class="search-icon" id="searchIcon">
+        <div class="suggestions" id="suggestions">
+            <a href="javascript:void(0);" data-value="wheelchair">Wheelchair</a>
+            <a href="javascript:void(0);" data-value="parking">Parking</a>
+            <a href="javascript:void(0);" data-value="dogs">Dogs</a>
+            <a href="javascript:void(0);" data-value="lifts">Lifts</a>
+            <a href="javascript:void(0);" data-value="hearing loop">Hearing Loop</a>
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const suggestions = document.getElementById('suggestions');
+        const searchIcon = document.getElementById('searchIcon');
+
+        // 候補の有効な選択肢
+        const validOptions = ["wheelchair", "parking", "dogs", "lifts", "hearing loop"];
+
+        // 初期状態で候補を非表示
+        suggestions.style.display = 'none';
+
+        // フォーカスで候補を表示
+        searchInput.addEventListener('focus', function () {
+            suggestions.style.display = 'flex';
+        });
+
+        // 入力時に候補を表示
+        searchInput.addEventListener('input', function () {
+            const inputValue = searchInput.value.toLowerCase().trim();
+            if (inputValue.length === 0) {
+                suggestions.style.display = 'none';
+                return;
+            }
+            suggestions.style.display = 'flex';
+        });
+
+        // 候補クリック時に入力欄に追加
+        suggestions.addEventListener('click', function (e) {
+            const target = e.target.closest('a');
+            if (target) {
+                const suggestion = target.getAttribute('data-value');
+                const currentValue = searchInput.value.toLowerCase();
+
+                // 候補が既に入力されていない場合にのみ追加
+                if (!currentValue.includes(suggestion)) {
+                    searchInput.value = currentValue.length > 0
+                        ? `${currentValue} ${suggestion}`
+                        : suggestion;
+                }
+                searchInput.focus();
+            }
+        });
+
+        // 検索アイコンのクリック処理
+        searchIcon.addEventListener('click', function () {
+            const inputValue = searchInput.value.toLowerCase().trim();
+            const selectedOptions = inputValue.split(' ').filter(option => validOptions.includes(option));
+
+            // 入力に応じて遷移
+            if (selectedOptions.length > 0) {
+                if (selectedOptions.includes("wheelchair") && selectedOptions.includes("parking")) {
+                    window.location.href = 'example.html';
+                } else if (selectedOptions.includes("wheelchair") && selectedOptions.includes("dogs")) {
+                    window.location.href = 'wheelchair-dogs-page.html';
+                } else if (selectedOptions.includes("wheelchair")) {
+                    window.location.href = 'wheelchair_page.html';
+                } else if (selectedOptions.includes("dogs")) {
+                    window.location.href = 'dogs_page.html';
+                } else if (selectedOptions.includes("parking")) {
+                    window.location.href = 'example.html';
+                } else if (selectedOptions.includes("lifts")) {
+                    window.location.href = 'example.html';
+                } else if (selectedOptions.includes("hearing loop")) {
+                    window.location.href = 'example.html';
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
