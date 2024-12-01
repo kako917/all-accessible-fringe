@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,7 @@
             padding: 10px 0;
             position: absolute;
             top: 120px;
-            right: 50px; /* 小さい画像時の初期位置 */
+            right: 50px; /* Initial position for small images */
             transition: right 0.3s ease;
         }
 
@@ -59,7 +59,7 @@
             background-color: rgba(0, 0, 0, 0.1);
         }
 
-        /* 右側イベント画像 */
+        /* Event image on the right */
         .event-image-right {
             position: absolute;
             top: 60%;
@@ -69,7 +69,7 @@
             transition: all 0.3s ease;
         }
 
-        /* 右側の･･･ボタン */
+        /* "..." button on the right */
         .square-button-right {
             position: absolute;
             top: 62%;
@@ -89,7 +89,7 @@
             transition: all 0.3s ease;
         }
 
-        /* 左側イベント画像 */
+        /* Event image on the left */
         .event-image-left {
             position: absolute;
             top: 60%;
@@ -99,7 +99,7 @@
             transition: all 0.3s ease;
         }
 
-        /* 左側の･･･ボタン */
+        /* "..." button on the left */
         .square-button-left {
             position: absolute;
             top: 62%;
@@ -125,113 +125,113 @@
         left: 20px;
         width: 50px;
         height: 50px;
-        background-image: url('image/backbotton.png'); /* ボタン画像を指定 */
-        background-size: cover; /* 画像をボタンの大きさに合わせる */
+        background-image: url('image/backbotton.png'); /* Button image */
+        background-size: cover; /* Scale the image to button size */
         background-position: center;
         background-repeat: no-repeat;
-        border-radius: 10px; /* 必要に応じて角丸を保持 */
+        border-radius: 10px; /* Add rounded corners if necessary */
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        border: none; /* ボーダーが不要なら追加 */
+        border: none; /* Remove border if not needed */
         }
 
     </style>
 </head>
 <body>
-    <!-- Backボタン -->
+    <!-- Back button -->
     <div class="back-button" id="backButton"></div>
 
-    <!-- 右側のボタンコンテナ -->
+    <!-- Button container on the right -->
     <div class="button-container" id="buttonContainer">
         <button class="button" id="plusButton">+</button>
         <div class="divider"></div>
         <button class="button" id="minusButton">-</button>
     </div>
 
-    <!-- 右側のイベント画像 -->
+    <!-- Event image on the right -->
     <img src="image/dogs_small_eventinfo.png" alt="Event Information" class="event-image-right" id="eventImageRight">
 
-    <!-- 右側の･･･ボタン -->
+    <!-- "..." button on the right -->
     <div class="square-button-right" id="squareButtonRight">
         ･･･
     </div>
 
-    <!-- 左側のイベント画像 -->
+    <!-- Event image on the left -->
     <img src="image/small_eventinformation.png" alt="Event Information" class="event-image-left" id="eventImageLeft">
 
-    <!-- 左側の･･･ボタン -->
+    <!-- "..." button on the left -->
     <div class="square-button-left" id="squareButtonLeft">
         ･･･
     </div>
 
     <script>
-        let isImageSmall = true; // 初期状態は小さい画像
+        let isImageSmall = true; // Initial state is small images
 
-        // 右側の「･･･」ボタンの処理
+        // Right "..." button functionality
         document.getElementById("squareButtonRight").addEventListener("click", function () {
             const eventImageRight = document.getElementById("eventImageRight");
             const squareButtonRight = document.getElementById("squareButtonRight");
             const buttonContainer = document.getElementById("buttonContainer");
 
             if (isImageSmall) {
-                // 画像を大きくする
-                eventImageRight.src = "image/dogs_eventimformation.png";  // 右側の大きい画像
-                eventImageRight.style.top = "15%"; // 画像位置を上に
-                eventImageRight.style.maxWidth = "800px"; // 画像の大きさ
-                buttonContainer.style.right = "600px"; // ±ボタンを左に
-                squareButtonRight.style.top = "17%"; // ・・・ボタンも上に移動
+                // Enlarge the image
+                eventImageRight.src = "image/dogs_eventimformation.png";  // Larger right image
+                eventImageRight.style.top = "15%"; // Move image up
+                eventImageRight.style.maxWidth = "800px"; // Enlarge image size
+                buttonContainer.style.right = "600px"; // Move +/- buttons left
+                squareButtonRight.style.top = "17%"; // Move "..." button up
             } else {
-                // 小さい画像に戻す
-                eventImageRight.src = "image/dogs_small_eventinfo.png";  // 右側の小さい画像
-                eventImageRight.style.top = "60%"; // 画像位置を元に戻す
-                eventImageRight.style.maxWidth = "400px"; // 小さい画像のサイズ
-                buttonContainer.style.right = "50px"; // ±ボタンを右上に
-                squareButtonRight.style.top = "62%"; // ・・・ボタンを元の位置に戻す
+                // Restore to small image
+                eventImageRight.src = "image/dogs_small_eventinfo.png";  // Smaller right image
+                eventImageRight.style.top = "60%"; // Restore image position
+                eventImageRight.style.maxWidth = "400px"; // Restore image size
+                buttonContainer.style.right = "50px"; // Restore +/- buttons
+                squareButtonRight.style.top = "62%"; // Restore "..." button
                 squareButtonRight.style.right = "120px"
             }
 
-            isImageSmall = !isImageSmall; // 状態反転
+            isImageSmall = !isImageSmall; // Toggle state
         });
 
-        // 左側の「･･･」ボタンの処理
+        // Left "..." button functionality
         document.getElementById("squareButtonLeft").addEventListener("click", function () {
             const eventImageLeft = document.getElementById("eventImageLeft");
             const squareButtonLeft = document.getElementById("squareButtonLeft");
 
             if (isImageSmall) {
-                // 画像を大きくする
-                eventImageLeft.src = "image/eventimformation.png";  // 左側の大きい画像
-                eventImageLeft.style.top = "15%"; // 画像位置を上に
-                eventImageLeft.style.maxWidth = "800px"; // 画像の大きさ
-                squareButtonLeft.style.top = "17%"; // ・・・ボタンも上に移動
+                // Enlarge the image
+                eventImageLeft.src = "image/eventimformation.png";  // Larger left image
+                eventImageLeft.style.top = "15%"; // Move image up
+                eventImageLeft.style.maxWidth = "800px"; // Enlarge image size
+                squareButtonLeft.style.top = "17%"; // Move "..." button up
                 squareButtonLeft.style.left = "530px"
             } else {
-                // 小さい画像に戻す
-                eventImageLeft.src = "image/small_eventinformation.png";  // 左側の小さい画像
-                eventImageLeft.style.top = "60%"; // 画像位置を元に戻す
-                eventImageLeft.style.maxWidth = "400px"; // 小さい画像のサイズ
-                squareButtonLeft.style.top = "62%"; // ・・・ボタンを元の位置に戻す
+                // Restore to small image
+                eventImageLeft.src = "image/small_eventinformation.png";  // Smaller left image
+                eventImageLeft.style.top = "60%"; // Restore image position
+                eventImageLeft.style.maxWidth = "400px"; // Restore image size
+                squareButtonLeft.style.top = "62%"; // Restore "..." button
                 squareButtonLeft.style.left = "410px";
             }
 
-            isImageSmall = !isImageSmall; // 状態反転
+            isImageSmall = !isImageSmall; // Toggle state
         });
 
-        // プラスボタンのクリックイベント
+        // Plus button functionality
         document.getElementById("plusButton").addEventListener("click", function () {
             const body = document.body;
-            body.style.backgroundSize = "120%"; // 背景ズーム
+            body.style.backgroundSize = "120%"; // Zoom in background
         });
 
-        // マイナスボタンのクリックイベント
+        // Minus button functionality
         document.getElementById("minusButton").addEventListener("click", function () {
             const body = document.body;
-            body.style.backgroundSize = "cover"; // 背景を元に戻す
+            body.style.backgroundSize = "cover"; // Restore background size
         });
 
-        // 戻るボタンのクリックイベント
+        // Back button functionality
         document.getElementById("backButton").addEventListener("click", function () {
-            window.location.href = 'index.html'; // 戻るボタン
+            window.location.href = 'index.html'; // Navigate back
         });
     </script>
 </body>

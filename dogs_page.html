@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +9,16 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-image: url('image/dogs.png'); /* 背景画像 */
-            background-size: cover; /* 画面全体に背景をフィットさせる */
-            background-position: center; /* 中央に配置 */
+            background-image: url('image/dogs.png'); /* Background image */
+            background-size: cover; /* Fit background to screen */
+            background-position: center; /* Center the background */
             background-repeat: no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* 画面全体の高さ */
-            position: relative; /* 子要素に対して相対的に配置 */
-            transition: background-size 0.5s ease; /* 背景のズームにアニメーションを追加 */
+            height: 100vh; /* Full viewport height */
+            position: relative; /* Relative positioning for child elements */
+            transition: background-size 0.5s ease; /* Add animation for background zoom */
         }
 
         .button-container {
@@ -26,164 +26,163 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 50px; /* 幅を小さく */
-            background-color: rgba(169, 169, 169, 0.4); /* 薄い灰色 */
+            width: 50px; /* Narrower width */
+            background-color: rgba(169, 169, 169, 0.4); /* Light gray */
             border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 少しの影を付けて立体感 */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
             padding: 10px 0;
             position: absolute;
-            top: 100px; /* 上に少し寄せて配置 */
-            left: 600px; /* 初期位置 */
-            transition: right 0.3s ease; /* スムーズな移動 */
+            top: 100px; /* Slightly towards the top */
+            left: 600px; /* Initial position */
+            transition: right 0.3s ease; /* Smooth movement */
         }
 
         .button {
-            width: 30px; /* 幅を調整 */
-            height: 30px; /* 高さを調整 */
+            width: 30px; /* Adjust width */
+            height: 30px; /* Adjust height */
             border: none;
-            background-color: transparent; /* 背景を透明に */
-            font-size: 24px; /* フォントサイズを大きく */
-            color: white; /* テキストカラーを白に */
+            background-color: transparent; /* Transparent background */
+            font-size: 24px; /* Increase font size */
+            color: white; /* White text color */
             cursor: pointer;
             display: block;
             text-align: center;
         }
 
         .divider {
-            width: 80%; /* 幅を調整 */
+            width: 80%; /* Adjust width */
             margin: 0;
-            border-top: 1px solid #ccc; /* 上の線（区切り棒） */
+            border-top: 1px solid #ccc; /* Top border as a divider */
         }
 
         .button:hover {
-            background-color: rgba(0, 0, 0, 0.1); /* ホバー時に色を少し暗く */
+            background-color: rgba(0, 0, 0, 0.1); /* Slightly darken on hover */
         }
 
         .event-image {
             position: absolute;
             top: 50%;
             left: 50px;
-            transform: translateY(-50%); /* 画面中央に垂直揃え */
-            max-width: 600px; /* 画像の最大幅を設定 */
+            transform: translateY(-50%); /* Vertically center */
+            max-width: 600px; /* Set maximum width */
             height: auto;
         }
 
         .square-button {
             position: absolute;
-            top: 120px;  /* 初期位置（画面右上） */
+            top: 120px; /* Initial position (top-right) */
             left: 480px;
-            width: 50px; /* 正方形の幅 */
-            height: 50px; /* 正方形の高さ */
-            background-color: rgba(169, 169, 169, 0.4); /* 薄い灰色 */
+            width: 50px; /* Square width */
+            height: 50px; /* Square height */
+            background-color: rgba(169, 169, 169, 0.4); /* Light gray */
             border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 少しの影を付けて立体感 */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            font-size: 20px; /* フォントサイズを調整 */
-            color: white; /* テキストカラー */
-            font-weight: bold; /* 太字にして強調 */
-            transition: top 0.3s ease; /* スムーズなアニメーション */
+            font-size: 20px; /* Adjust font size */
+            color: white; /* Text color */
+            font-weight: bold; /* Bold text */
+            transition: top 0.3s ease; /* Smooth animation */
         }
 
-        /* Backボタンのスタイル */
+        /* Back button style */
         .back-button {
             position: absolute;
             top: 20px;
             left: 20px;
             width: 50px;
             height: 50px;
-            background-image: url('image/backbotton.png'); /* ボタン画像を指定 */
-            background-size: cover; /* 画像をボタンの大きさに合わせる */
+            background-image: url('image/backbotton.png'); /* Set button image */
+            background-size: cover; /* Adjust image to button size */
             background-position: center;
             background-repeat: no-repeat;
-            border-radius: 10px; /* 必要に応じて角丸を保持 */
+            border-radius: 10px; /* Keep rounded corners if needed */
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             cursor: pointer;
-            border: none; /* ボーダーが不要なら追加 */
+            border: none; /* Remove border if unnecessary */
         }
-
     </style>
 </head>
 <body>
 
-    <!-- Backボタン -->
+    <!-- Back Button -->
     <div class="back-button" id="backButton"></div>
 
     <div class="button-container" id="buttonContainer">
-        <!-- プラスボタン -->
+        <!-- Plus Button -->
         <button class="button" id="plusButton">+</button>
-        <!-- 区切り棒 -->
+        <!-- Divider -->
         <div class="divider"></div>
-        <!-- マイナスボタン -->
+        <!-- Minus Button -->
         <button class="button" id="minusButton">-</button>
     </div>
 
-    <!-- 画像を右側に配置 -->
+    <!-- Image positioned on the right -->
     <img src="image/dogs_eventimformation.png" alt="Event Information" class="event-image" id="eventImage">
 
-    <!-- 正方形ボタン -->
+    <!-- Square Button -->
     <div class="square-button" id="squareButton">
         ･･･
     </div>
 
     <script>
-        // トグル用のフラグ
-        let isImageSmall = false; // 現在表示されている画像が小さいかどうか
+        // Toggle flag
+        let isImageSmall = false; // Whether the currently displayed image is small
 
-        // 正方形ボタンのクリックイベント
+        // Square button click event
         document.getElementById("squareButton").addEventListener("click", function () {
             const eventImage = document.getElementById("eventImage");
             const squareButton = document.getElementById("squareButton");
             const buttonContainer = document.getElementById("buttonContainer");
 
             if (isImageSmall) {
-                // 元の画像に戻す
+                // Revert to original image
                 eventImage.src = "image/dogs_eventimformation.png";
 
-                // ボタンを上に移動
+                // Move the button up
                 squareButton.style.top = "120px";
                 squareButton.style.left = "480px";
 
-                // プラスマイナスボタンを右に移動
+                // Move plus-minus button to the right
                 buttonContainer.style.left = "600px";
             } else {
-                // 小さい画像に切り替え
+                // Switch to smaller image
                 eventImage.src = "image/dogs_small_eventinfo.png";
 
-                // ボタンを下に移動
+                // Move the button down
                 squareButton.style.top = "340px";
                 squareButton.style.left = "360px";
 
-                // プラスマイナスボタンを左に移動
+                // Move plus-minus button to the left
                 buttonContainer.style.left = "50px";
             }
 
-            // 状態を反転
+            // Toggle state
             isImageSmall = !isImageSmall;
         });
 
-        // プラスボタンのクリックイベント
+        // Plus button click event
         document.getElementById("plusButton").addEventListener("click", function () {
             const body = document.body;
 
-            // 背景をズーム
-            body.style.backgroundSize = "120%";  // 10%ズーム
+            // Zoom in on background
+            body.style.backgroundSize = "120%"; // Zoom by 10%
         });
 
-        // マイナスボタンのクリックイベント
+        // Minus button click event
         document.getElementById("minusButton").addEventListener("click", function () {
             const body = document.body;
 
-            // 背景を元に戻す
-            body.style.backgroundSize = "cover";  // 背景を元のサイズに戻す
+            // Revert background
+            body.style.backgroundSize = "cover"; // Reset to original size
         });
 
-        // Backボタンのクリックイベント
+        // Back button click event
         document.getElementById("backButton").addEventListener("click", function() {
-            // 'index.html' に遷移
-            window.location.href = 'index.html';  // ここで遷移
+            // Navigate to 'index.html'
+            window.location.href = 'index.html'; // Navigate
         });
     </script>
 
