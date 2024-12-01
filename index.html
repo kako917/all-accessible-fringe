@@ -23,6 +23,7 @@
             text-align: center;
             position: relative;
             width: 80%;
+            margin-top: 100px;
         }
 
         .search-bar {
@@ -38,6 +39,17 @@
             margin: auto;
             padding-right: 40px;
             position: relative;
+        }
+
+        /* Voice icon inside the search bar */
+        .voice-icon {
+            position: absolute;
+            left: 230px; /* Place the icon on the right side */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px; /* Adjust image size */
+            height: 20px; /* Adjust image size */
+            cursor: pointer;
         }
 
         .search-icon {
@@ -64,22 +76,20 @@
         }
 
         .suggestions a {
-            width: 200px; /* 横幅を設定 */
-            height: auto; /* 自動調整。これでテキスト量に応じて縦幅は自然に決まる */
+            width: 200px;
+            height: auto;
             border: 1px solid #ccc;
             border-radius: 5px;
             text-decoration: none;
             color: black;
             background-color: white;
-            display: inline-block; /* 横幅を設定可能にする */
+            display: inline-block;
             cursor: pointer;
-            padding: 10px 0; /* 上下の余白は固定、左右の余白は省略 */
+            padding: 10px 0;
             margin: 5px;
-            text-align: center; /* テキストを中央揃えにする */
-            box-sizing: border-box; /* ボーダーとパディングを幅に含める */
+            text-align: center;
+            box-sizing: border-box;
         }
-
-
 
         .suggestions a:hover {
             background-color: #ddd;
@@ -89,7 +99,8 @@
 <body>
 
     <div class="search-container">
-        <input type="text" class="search-bar" id="searchInput" placeholder="Search...">
+        <input type="text" class="search-bar" id="searchInput" placeholder="">
+        <img src="image/voice.png" alt="Voice Icon" class="voice-icon" id="voiceIcon">
         <img src="image/search.png" alt="Search Icon" class="search-icon" id="searchIcon">
         <div class="suggestions" id="suggestions">
             <a href="javascript:void(0);" data-value="wheelchair">Wheelchair</a>
@@ -102,56 +113,63 @@
 
     <script>
         const searchInput = document.getElementById('searchInput');
+        const voiceIcon = document.getElementById('voiceIcon');
         const suggestions = document.getElementById('suggestions');
         const searchIcon = document.getElementById('searchIcon');
 
-        // 候補の有効な選択肢
+        // Valid options for suggestions
         const validOptions = ["wheelchair", "parking", "dogs", "lifts", "hearing loop"];
 
-        // 初期状態で候補を非表示
+        // Hide suggestions by default
         suggestions.style.display = 'none';
 
-        // フォーカスで候補を表示
+        // Show suggestions when input field gains focus
         searchInput.addEventListener('focus', function () {
             suggestions.style.display = 'flex';
         });
 
-        // 入力時に候補を表示
+        // Show suggestions when input field is being typed in
         searchInput.addEventListener('input', function () {
             const inputValue = searchInput.value.toLowerCase().trim();
             if (inputValue.length === 0) {
                 suggestions.style.display = 'none';
-                return;
+                voiceIcon.style.display = 'block'; // Show voice icon if no input
+            } else {
+                suggestions.style.display = 'flex';
+                voiceIcon.style.display = 'none'; // Hide voice icon when input is present
             }
-            suggestions.style.display = 'flex';
         });
 
-        // 候補クリック時に入力欄に追加
+        // Add clicked suggestion to the input field and hide voice icon
         suggestions.addEventListener('click', function (e) {
             const target = e.target.closest('a');
             if (target) {
                 const suggestion = target.getAttribute('data-value');
                 const currentValue = searchInput.value.toLowerCase();
 
-                // 候補が既に入力されていない場合にのみ追加
+                // Only add the suggestion if it hasn't already been entered
                 if (!currentValue.includes(suggestion)) {
                     searchInput.value = currentValue.length > 0
                         ? `${currentValue} ${suggestion}`
                         : suggestion;
                 }
+
+                // Hide voice icon when a suggestion is clicked
+                voiceIcon.style.display = 'none';
+                
                 searchInput.focus();
             }
         });
 
-        // 検索アイコンのクリック処理
+        // Handle search icon click
         searchIcon.addEventListener('click', function () {
             const inputValue = searchInput.value.toLowerCase().trim();
             const selectedOptions = inputValue.split(' ').filter(option => validOptions.includes(option));
 
-            // 入力に応じて遷移
+            // Redirect based on input
             if (selectedOptions.length > 0) {
                 if (selectedOptions.includes("wheelchair") && selectedOptions.includes("parking")) {
-                    window.location.href = 'example.html';
+                    window.location.href = 'index.html';
                 } else if (selectedOptions.includes("wheelchair") && selectedOptions.includes("dogs")) {
                     window.location.href = 'wheelchair-dogs-page.html';
                 } else if (selectedOptions.includes("wheelchair")) {
@@ -159,11 +177,11 @@
                 } else if (selectedOptions.includes("dogs")) {
                     window.location.href = 'dogs_page.html';
                 } else if (selectedOptions.includes("parking")) {
-                    window.location.href = 'example.html';
+                    window.location.href = 'index.html';
                 } else if (selectedOptions.includes("lifts")) {
-                    window.location.href = 'example.html';
+                    window.location.href = 'index.html';
                 } else if (selectedOptions.includes("hearing loop")) {
-                    window.location.href = 'example.html';
+                    window.location.href = 'index.html';
                 }
             }
         });
