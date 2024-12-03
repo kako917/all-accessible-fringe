@@ -143,32 +143,34 @@
     </div>
 
     <script>
-        // Navigate when the circle image is clicked
-        document.getElementById("circleImage").addEventListener("click", function() {
+        // Navigate when hovering over the circle image
+        document.getElementById("circleImage").addEventListener("mouseover", function() {
             window.location.href = 'wheelchair_page.html'; // Page transition
         });
 
-        // Click event for the Plus button
-        document.getElementById("plusButton").addEventListener("click", function () {
+        // Mouseover event for the Plus button
+        document.getElementById("plusButton").addEventListener("mouseover", function () {
             const body = document.body;
 
             // Zoom in the background
             body.style.backgroundSize = "120%";  // Zoom in by 10%
         });
 
-        // Click event for the Minus button
-        document.getElementById("minusButton").addEventListener("click", function () {
+        // Mouseover event for the Minus button
+        document.getElementById("minusButton").addEventListener("mouseover", function () {
             const body = document.body;
 
             // Reset the background to its original size
             body.style.backgroundSize = "cover";  // Return background to original size
         });
 
-        // Click event for the Back button
-        document.getElementById("backButton").addEventListener("click", function() {
+        // Mouseover event for the Back button
+        document.getElementById("backButton").addEventListener("mouseover", function() {
             // Navigate to 'index.html'
             window.location.href = 'index.html';  // Transition here
         });
+
+        // No longer modify the square button's behavior (remove previous toggle functionality)
     </script>
 
 </body>
